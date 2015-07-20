@@ -3,7 +3,7 @@ CFLAGS=-I inculde -Wall -Wextra
 all: buildheaders
 
 buildheaders:
-	gcc -o ./build/buildheaders buildheaders.c
+	gcc -o ./build/headercompile headercompile.c
 
 bh:
-	./build/buildheaders
+	./build/headercompile
