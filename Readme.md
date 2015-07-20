@@ -1,4 +1,20 @@
-slam on circles
+talking-head
 ===============
 
-curses dremmer animation for future use with curses synth
+ncurses talking head
+```
+             _-.-*`--.
+          ."* \\\\\\\\\\
+         *     \\\\\\\\\\\
+       ||        \|\|\|\|\\
+       ?           \\\|||\\
+       ' ><   ><       . '
+        'ↂ \  ↂ       /\\ '
+         ' |    .     \|| ;
+         '{..}         * ;
+          /__\          ?
+           ⎺⎺           $
+          .``         .
+           '_\_/''' ''
+
+```
