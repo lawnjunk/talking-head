@@ -60,6 +60,21 @@ int main(){
           // no op
         } else {
           printf("    file: %s\n", innerDent->d_name);
+          char headPartPath[PATH_MAX + 1];
+          strcpy(headPartPath, innerDirPath);
+          strcat(headPartPath, "/");
+          strcat(headPartPath, innerDent->d_name);
+          printf("    filePath: %s\n", headPartPath);
+          FILE *headPartFile = fopen(headPartPath, "r");
+          fseek(headPartFile, 0L, SEEK_END);
+          int headPartSize = ftell(headPartFile);
+          printf("    fileSize: %d\n", headPartSize);
+          rewind(headPartFile);
+          char *headPartContents[headPartSize +1];
+          fread(headPartContents, headPartSize, 1, headPartFile);
+          headPartContents[++headPartSize] = '\0';
+          printf("    fileConents: %s\n\n", headPartContents);
+
         }
       }
     }
