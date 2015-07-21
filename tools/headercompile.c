@@ -73,11 +73,20 @@ int main(){
           char *headPartContents[headPartSize +1];
           fread(headPartContents, headPartSize, 1, headPartFile);
           headPartContents[++headPartSize] = '\0';
-          printf("    fileConents: %s\n\n", headPartContents);
+          printf("    fileConents:\n%s\n\n", headPartContents);
+          /*char headPartLines[10][250]; */
+          /*int linecount = 0;*/
+          /*int lineIndex = 0;*/
+          for (int i=0; headPartContents[i] != '\0'; i++){
+            printf("headpartcontents[i] %c\n", headPartContents[i]);
 
+          }
+          fclose(headPartFile);
         }
       }
+      closedir(innerDir); 
     }
+
   }
 
   /*printf("dir serail numer: %s", headent->d_name[0]);*/

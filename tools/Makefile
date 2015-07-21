@@ -5,5 +5,8 @@ all: buildheaders
 buildheaders:
 	gcc -o ./build/headercompile headercompile.c
 
-bh:
+hb:
 	./build/headercompile
+
+vhb:
+	valgrind ./build/headercompile
