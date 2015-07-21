@@ -1,12 +1,18 @@
-CFLAGS=-I inculde -Wall -Wextra
+CFLAGS=-I inculde -Wall 
 
-all: buildheaders
+all: headercompile  exr
 
-buildheaders:
+headerCompile:
 	gcc -o ./build/headercompile headercompile.c
 
-hb:
+ex:
+	gcc -o ./build/exprmnt exprmnt.c
+
+h:
 	./build/headercompile
 
-vhb:
-	valgrind ./build/headercompile
+vh:
+	valgrind ./build/headercompile | less
+
+e: 
+	./build/exprmnt
