@@ -4,6 +4,7 @@
 #include <limits.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 #include "include/setup.h"
 
 // prepare data
@@ -53,6 +54,13 @@ int main(){
         printf("Cannot open dir innerDir\n");
         return -1;
       }
+
+      char headerPartFilePath[PATH_MAX + 1] = PROJ_PATH;
+      strcat(headerPartFilePath, "/tools/include/");
+      strcat(headerPartFilePath, headent->d_name);
+      strcat(headerPartFilePath, ".h");
+      printf("headerPartFilePath: %s\n", headerPartFilePath);
+      FILE *headerPartFile = fopen(headerPartFilePath, "w");
       
       struct dirent *innerDent;
       while((innerDent = readdir(innerDir)) != NULL){
@@ -105,29 +113,35 @@ int main(){
               lineIndex = 0;
             }
           }
-          fclose(headPartFile);
 
-          // open par header
-          /*char *partHeaderPath[PATH_MAX + 1] = PROJ_PATH;*/
-          /*strcat(partHeaderPath, "/tools/include/");*/
-
+           /*write part header*/
+           /*get part name */
           char *headPartFileName = innerDent->d_name;
           int headPartFNLen = strlen(headPartFileName);
 
+          printf("headerpartfilename: %s\n", headPartFileName);
           char partname[headPartFNLen - 3];
-          strncpy(partname, headPartFileName, headPartFNLen -4);
+          int i=0;
+          for (i=0; i < headPartFNLen -4; i++){
+            if (headPartFileName[i] == '-'){
+              partname[i] = '_';
+            } else {
+              partname[i] = toupper(headPartFileName[i]);
+            }
+          }
+          /*strncpy(partname, headPartFileName, headPartFNLen -4);*/
           partname[headPartFNLen -4] = '\0';
           /*strcpy(headPartFileName, innerDirPath); */
-          printf("headPartFileName: %s\n", headPartFileName);
-          printf("headPartFNLen: %d\n", headPartFNLen);
+          /*printf("headPartFileName: %s\n", headPartFileName);*/
+          /*printf("headPartFNLen: %d\n", headPartFNLen);*/
           printf("partname: %s\n", partname);
-          /*int lulpathLen = strlen(headPartPath);*/
-          /*FILE *partHeaderFile = fopen(partHeaderPath, "w+");*/
-          // write part header
-          // close part header
+
+          fclose(headPartFile);
         }
       }
       closedir(innerDir); 
+      fclose(headerPartFile);
+      //closeheader
     }
 
   }

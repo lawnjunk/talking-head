@@ -1,9 +1,9 @@
 CFLAGS=-I inculde -Wall 
 
-all: headercompile  exr
+all: headercompile  ex
 
-headerCompile:
-	gcc -o ./build/headercompile headercompile.c
+headercompile:
+	gcc -o build/headercompile headercompile.c
 
 ex:
 	gcc -o ./build/exprmnt exprmnt.c
