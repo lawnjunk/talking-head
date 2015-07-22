@@ -1,43 +1,30 @@
 #ifndef _eyes_h
-#define _eyes_h 
+#define _eyes_h
 
-char *eyes_angry0         = "       ' ><   ><       . '       ";
-char *eyes_angry1         = "        '\\x\\  /x      /\\\\ '      ";
-
-char *eyes_big0           = "       ' ''  \"\"\":      . '       ";
-char *eyes_big1           = "        '❉ \\  ❉       /\\\\ '      ";
-
-char *eyes_big_white0     = "       ' ''  \"\"\":      . '       ";
-char *eyes_big_white1     = "        '◯ \\  ◯       /\\\\ '      ";
-
-char *eyes_closed0        = "       '--'  \"--:      . '       ";
-char *eyes_closed1        = "        '- \\  --      /\\\\ '      ";
-
-char *eyes_fill0          = "       ' ><   ><       . '       ";
-char *eyes_fill1          = "        '⬤ \\  ⬤       /\\\\ '      ";
-
-char *eyes_love0          = "       ' ''  \"\"\":      . '       ";
-char *eyes_love1          = "        '♥ \\  ♥       /\\\\ '      ";
-
-char *eyes_money0         = "       ' ==  ===:      . '       ";
-char *eyes_money1         = "        ($)\\ ($_      /\\\\ '      ";
-
-char *eyes_none0          = "       ' -    --       . '       ";
-char *eyes_none1          = "        '  \\          /\\\\ '      ";
-
-char *eyes_open0          = "       ' ''  \"\"\":      . '       ";
-char *eyes_open1          = "        'o \\  o       /\\\\ '      ";
-
-char *eyes_question0      = "       '--'  \"--:      . '       ";
-char *eyes_question1      = "        (?)\\ (?)      /\\\\ '      ";
-
-char *eyes_shut0          = "       ' ~-  ~~-:      . '       ";
-char *eyes_shut1          = "        '= \\  ='      /\\\\ '      ";
-
-char *eyes_target0        = "       ' ><   ><       . '       ";
-char *eyes_target1        = "        'ↂ \\  ↂ       /\\\\ '      ";
-
-char *eyes_wiggle0        = "       ' ^^  ^^~:      . '       ";
-char *eyes_wiggle1        = "        '~ \\  ~'      /\\\\ '      ";
-
+#define EYES_SHUT_0 "       ' ~-  ~~-:      . '"
+#define EYES_SHUT_1 "        '= \\  ='      /\\\\ '"
+#define EYES_ANGRY_0 "       ' ><   ><       . '"
+#define EYES_ANGRY_1 "        '\\x\\  /x      /\\\\ '"
+#define EYES_FILL_0 "       ' ><   ><       . '"
+#define EYES_FILL_1 "        '⬤ \\  ⬤       /\\\\ '"
+#define EYES_NONE_0 "       ' -    --       . '"
+#define EYES_NONE_1 "        '  \\          /\\\\ '"
+#define EYES_TARGET_0 "       ' ><   ><       . '"
+#define EYES_TARGET_1 "        'ↂ \\  ↂ       /\\\\ '"
+#define EYES_LOVE_0 "       ' ''  \"\"\":      . '"
+#define EYES_LOVE_1 "        '♥ \\  ♥       /\\\\ '"
+#define EYES_CLOSED_0 "       '--'  \"--:      . '"
+#define EYES_CLOSED_1 "        '- \\  --      /\\\\ '"
+#define EYES_OPEN_0 "       ' ''  \"\"\":      . '"
+#define EYES_OPEN_1 "        'o \\  o       /\\\\ '"
+#define EYES_BIG_WHITE_0 "       ' ''  \"\"\":      . '"
+#define EYES_BIG_WHITE_1 "        '◯ \\  ◯       /\\\\ '"
+#define EYES_BIG_0 "       ' ''  \"\"\":      . '"
+#define EYES_BIG_1 "        '❉ \\  ❉       /\\\\ '"
+#define EYES_WIGGLE_0 "       ' ^^  ^^~:      . '"
+#define EYES_WIGGLE_1 "        '~ \\  ~'      /\\\\ '"
+#define EYES_MONEY_0 "       ' ==  ===:      . '"
+#define EYES_MONEY_1 "        ($)\\ ($_      /\\\\ '"
+#define EYES_QUESTION_0 "       '--'  \"--:      . '"
+#define EYES_QUESTION_1 "        (?)\\ (?)      /\\\\ '"
 #endif

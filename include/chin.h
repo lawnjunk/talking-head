@@ -1,7 +1,6 @@
 #ifndef _chin_h
 #define _chin_h
 
-char *chin0             = "          .``         .      "
-char *chin1             = "           '_\_/''' ''       "
-
+#define CHIN_0 "          .``         ."
+#define CHIN_1 "           '_\\_/''' ''"
 #endif

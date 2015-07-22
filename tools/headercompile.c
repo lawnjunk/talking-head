@@ -61,6 +61,10 @@ int main(){
       strcat(headerPartFilePath, ".h");
       printf("headerPartFilePath: %s\n", headerPartFilePath);
       FILE *headerPartFile = fopen(headerPartFilePath, "w");
+
+      fprintf(headerPartFile, "#ifndef _%s_h\n", headent->d_name);
+      fprintf(headerPartFile, "#define _%s_h\n\n", headent->d_name);
+
       
       struct dirent *innerDent;
       while((innerDent = readdir(innerDir)) != NULL){
@@ -91,19 +95,26 @@ int main(){
           printf("    fileConents:\n%s\n", headPartContents);
 
           // split part contents by \n
-          char headPartLines[10][250]; 
+          char headPartLines[10][250] = {'\0', '\0', '\0', '\0', '\0',
+               '\0', '\0', '\0', '\0', '\0'};
           int linecount = 0;
           int lineIndex = 0;
           for (int i=0; headPartContents[i] != '\0'; i++){
             /*printf("headpartcontents[i] %c\n", headPartContents[i]);*/
             /*printf("               int: %d\n", headPartContents[i]);*/
-            if (headPartContents[i] != '\n'|| headPartContents[i] != '\0'){
-              if (headPartContents[i] == '\\'){
+            if (headPartContents[i] != '\n'){
+              if (headPartContents[i] == '\\' && headPartContents[i] != '\0'){
                 headPartLines[linecount][lineIndex] = '\\';
                 headPartLines[linecount][++lineIndex] = '\\';
+                headPartLines[linecount][++lineIndex] = '\\';
+              } else if (headPartContents[i] == '\"'){
+
+                headPartLines[linecount][lineIndex] = '\\';
+                headPartLines[linecount][++lineIndex] = '\"';
+                headPartLines[linecount][++lineIndex] = '\"';
+                
               } else {
                 headPartLines[linecount][lineIndex] = headPartContents[i] ;
-              /*printf("hpl[%d][%d]: %c\n", linecount, lineIndex, headPartContents[i]);*/
                 lineIndex++;
               }
             } else {
@@ -129,18 +140,25 @@ int main(){
               partname[i] = toupper(headPartFileName[i]);
             }
           }
-          /*strncpy(partname, headPartFileName, headPartFNLen -4);*/
           partname[headPartFNLen -4] = '\0';
-          /*strcpy(headPartFileName, innerDirPath); */
-          /*printf("headPartFileName: %s\n", headPartFileName);*/
-          /*printf("headPartFNLen: %d\n", headPartFNLen);*/
           printf("partname: %s\n", partname);
+          char defineVar[400] ="#define ";
+          strcat(defineVar, partname);
+          printf("definevar: %s\n", defineVar);
+          
+          for (int i=0; headPartLines[i][0] != '\0'; i++){
+            printf("%s_%d \"%s\"\n", defineVar, i, headPartLines[i]);
+            fprintf(headerPartFile, "%s_%d \"%s\"\n", defineVar, i, headPartLines[i]);
+          }
 
-          fclose(headPartFile);
+          /*printf("hpl 0: \"%s\"\n", headPartLines[0]);*/
+          /*printf("hpl 1: \"%s\"\n", headPartLines[1]);*/
+
         }
       }
-      closedir(innerDir); 
+      fprintf(headerPartFile, "#endif\n");
       fclose(headerPartFile);
+      closedir(innerDir); 
       //closeheader
     }
 
